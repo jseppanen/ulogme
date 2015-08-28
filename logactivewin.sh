@@ -18,7 +18,11 @@ lasttitle=""
 while true
 do
 
-	islocked=true; if [[ $(gnome-screensaver-command -q) =~ .*inactive.* ]]; then islocked=false; fi
+	islocked=true;
+	if [[ $(gdbus call -e -d com.canonical.Unity -o /com/canonical/Unity/Session -m com.canonical.Unity.Session.IsLocked) \
+		=~ .*false.* ]]; then
+		islocked=false;
+	fi
 	if [ $islocked = true ]; then
 		curtitle="__LOCKEDSCREEN"
 	else 
