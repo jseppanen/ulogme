@@ -7,5 +7,7 @@ else
   # Assume Linux
   sudo echo -n ""
   sudo ./keyfreq.sh &
-  ./logactivewin.sh
+  ./logsound.sh &
+  ./logactivewin.sh &
+  wait
 fi
